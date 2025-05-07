@@ -73,7 +73,7 @@ public class SproutInit extends HttpServlet
 		//following 2 lines to extract path pf pur context name folder
 		ServletContext servletContext=getServletContext();
 		String pth=servletContext.getRealPath(".");
-		String classesFolderPath=pth+File.separator+"Sprout"+"WEB-INF"+File.separator+"classes";
+		String classesFolderPath=pth+File.separator+"WEB-INF"+File.separator+"classes";
 		List<String> services=getSproutServices(classesFolderPath);
 		for(String s:services) System.out.println(s);
 	}
