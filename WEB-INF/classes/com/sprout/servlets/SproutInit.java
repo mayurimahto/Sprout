@@ -1,5 +1,6 @@
 package com.sprout.servlets;
 
+import com.sprout.annotations.*;
 import java.util.*;
 import java.io.*;
 import jakarta.servlet.http.*;
@@ -10,9 +11,20 @@ import jakarta.servlet.*;
 public class SproutInit extends HttpServlet
 {
 
-	public void processClassFile(String className, List<String>list)
+	void processClassFile(String className, List<String>list)
 	{
-		System.out.println("in processClassFile : "+className);
+		try
+		{
+			Class c=Class.forName(className);
+			if(c.isAnnotationPresent(SproutService.class))
+			{
+				list.add(className);
+			}	
+		}
+		catch(Exception exception)
+		{
+			System.out.println(exception);
+		}
 	}
 	public void __getSproutServices(String classesFolder, String childFolder, List<String> list)
 	{
